@@ -42,7 +42,7 @@ let saveData = () => {
 
 }
 
-llet fetchData = () => {
+let fetchData = () => {
 
   
 
