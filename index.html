@@ -1,82 +1,75 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <title>Static Google Map</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <style>
-        img {
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-        }
-    </style>
-</head>
-
-<body>
-
-    <div class="container">
-        <form class="form-horizontal">
+<html>
+   <head>
+      <title>text over Image</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      <style>
+         img {
+         display: block;
+         margin-left: auto;
+         margin-right: auto;
+         }
+      </style>
+   </head>
+   <body>
+      <div class="container">
+         <form class="form-horizontal">
             <fieldset>
-
-                <!-- Form Name -->
-                <legend>Configure Map Parameters</legend>
-
-                <!-- Text input-->
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="mapCentre">Map Centre</label>
-                    <div class="col-md-4">
-                        <input id="mapCentre" name="mapCentre" type="text" placeholder="Map Centre" class="form-control input-md" required="" value="London, UK">
-
-                    </div>
-                </div>
-
-                <!-- Text input-->
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="mapWidth">Width</label>
-                    <div class="col-md-2">
-                        <input id="mapWidth" name="mapWidth" type="text" placeholder="Width" class="form-control input-md" required="" value="600">
-
-                    </div>
-                </div>
-
-                <!-- Text input-->
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="mapHeight">Height</label>
-                    <div class="col-md-2">
-                        <input id="mapHeight" name="mapHeight" type="text" placeholder="Height" class="form-control input-md" required="" value="300">
-
-                    </div>
-                </div>
-
-                <!-- Text input-->
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="mapZoom">Zoom</label>
-                    <div class="col-md-2">
-                        <input id="mapZoom" name="mapZoom" type="text" placeholder="Zoom" class="form-control input-md" required="" value="13">
-
-                    </div>
-                </div>
-
-    </div>
-
-
-    </fieldset>
-    </form>
-
-    </div>
-
-    <script src="/blocksdk.js"></script>
-    <script src="/mainApp.js"></script>
+               <!-- Form Name -->
+               <legend>Configure Image & Text Parameters</legend>
+               <!-- Text input-->
+               <div class="form-group">
+                  <label class="col-md-4 control-label" for="ImageURL">Image URL</label>
+                  <div class="col-md-4">
+                     <input id="ImageURL" name="ImageURL" type="text" placeholder="Image URL" class="form-control input-md" required="" >
+                  </div>
+               </div>
+               <!-- Text input-->
+               <div class="form-group">
+                  <label class="col-md-4 control-label" for="mapHeight">Height</label>
+                  <div class="col-md-2">
+                     <input id="ImgHeight" name="ImgHeight" type="text" placeholder="Height" class="form-control input-md" required="" >
+                  </div>
+               </div>
+               <!-- Text input-->
+               <div class="form-group">
+                  <label class="col-md-4 control-label" for="Text">Text</label>
+                  <div class="col-md-4">
+                     <div id="standalone-container">
+                        <input id="Text" name="Text" type="text" placeholder="Text on Top Of image" class="form-control input-md">
+                     </div>
+                  </div>
+               </div>
+               <div class="form-group">
+                  <label class="col-md-4 control-label" for="Text">Colour</label>
+                  <div class="col-md-4">
+                     <div id="standalone-container">
+                        <select id="Textcolor" name="Textcolor" class="form-control input-md">
+                           <option value="#000000">Black</option>
+                           <option value="#FFFFFF">White</option>
+                           <option value="#FF0000">Red</option>
+                           <option value="#0000FF">Blue</option>
+                           <option value="#048500">Green</option>
+                        </select>
+                     </div>
+                  </div>
+               </div>
+      </div>
+      </fieldset>
+      </form>
+      </div>
+      </div>
+      <script src="/blocksdk.js"></script>
+      <script src="/mainApp.js"></script>
+   </body>
+</html>
 
 
-    <script>
-    </script>
 
+    
 </body>
-
 </html>
