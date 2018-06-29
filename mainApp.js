@@ -1,20 +1,17 @@
+
+
 // if (window.self === window.top) {
 //     document.body.innerText = 'This application is for use in the Salesforce Marketing Cloud Content Builder only!';;
 // }
 
 let sdk = new window.sfdc.BlockSDK(); //initalize SDK
 
-let mapData = {
-    apiKey: '',
-    mapCentre: 'Sydney, Au',
-    mapHeight: 300,
-    mapWidth: 600,
-    mapZoom: 14,
-    mapType: 'roadmap',
-    mapMarker: {
-        color: '0xff0000',
-        label: 'Sydney, Au'
-    }
+let imgData = {
+   
+    ImageURL: 'http://image.s4.exct.net/lib/fe8f15737c62077a76/m/1/a9836fc9-54dc-434a-a09f-2b2ca88ce146.png',
+    ImgHeight: 400,
+    Text: 'Text Over Image',
+	Textcolor: '#000000'
 };
 
 // let defaultContent = '<img width="100%" src="https://maps.googleapis.com/maps/api/staticmap?center=London,+UK&zoom=12&scale=1&size=600x300&maptype=roadmap&format=png&visual_refresh=true" alt="Google Map">';
@@ -73,3 +70,4 @@ let fetchData = () => {
 
 window.onload = fetchData;
 window.onchange = saveData;
+
