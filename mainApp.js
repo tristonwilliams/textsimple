@@ -64,7 +64,7 @@ let fetchData = () => {
 }
 
 
- sdk.setContent(defaultContent);
+ //sdk.setContent(defaultContent);
 
 // sdk.setSuperContent(defaultContent, (newSuperContent) => {
 //     defaultContent = newSuperContent;
