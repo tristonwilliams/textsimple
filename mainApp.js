@@ -14,55 +14,57 @@ let imgData = {
 	Textcolor: '#000000'
 };
 
-// let defaultContent = '<img width="100%" src="https://maps.googleapis.com/maps/api/staticmap?center=London,+UK&zoom=12&scale=1&size=600x300&maptype=roadmap&format=png&visual_refresh=true" alt="Google Map">';
-let defaultContent = '<img src="https://dj-gmaps-sfmc-content-nlock.herokuapp.com//dragIcon.png" style="display:block;margin-left:auto;margin-right:auto">';
+let defaultContent ="<table width='100%' border='0' cellspacing='0' cellpadding='0'> <tbody> <tr> <td style='background-repeat:no-repeat;' background='http://image.s4.exct.net/lib/fe8f15737c62077a76/m/1/a9836fc9-54dc-434a-a09f-2b2ca88ce146.png' bgcolor='#ffffff' width='600' height='400' valign='top'> <!--[if gte mso 9]> <v:rect xmlns:v='urn:schemas-microsoft-com:vml' fill='true' stroke='false' style='background-repeat:no-repeat; width:600px;height:400px;'> <v:fill type='tile' src='http://image.s4.exct.net/lib/fe8f15737c62077a76/m/1/a9836fc9-54dc-434a-a09f-2b2ca88ce146.png' color='#ffffff' /> <v:textbox inset='0,0,0,0'> <![endif]--> <div> <table width='100%' border='0' cellspacing='0' cellpadding='0'> <tbody> <tr> <td width='30' align='left' valign='top' style='font-size: 0%;'></td> <td align='left' valign='top'><table width='100%' border='0' cellspacing='0' cellpadding='0'> <tbody> <tr> <td align='left' valign='top' style='padding-top: 95px;color: #000000; padding-left: 100px; padding-right: 100px; font-size: 48px;'><center>Text Over Image</center></td> </tr> </tbody> </table></td> <td width='30' align='left' valign='top' style='font-size: 0%;'></td> </tr> </tbody> </table> </div> <!--[if gte mso 9]> </v:textbox> </v:rect> <![endif]--> </td> </tr> </tbody> </table>";
 
 let saveData = () => {
-    // console.log('Saving data...');
+	
+    imgData.ImgHeight = document.getElementById('ImgHeight').value;
+    imgData.ImageURL = document.getElementById('ImageURL').value;
+    imgData.Text = document.getElementById('Text').value;
+	imgData.Textcolor = document.getElementById('Textcolor').value;
+	
 
-    // mapData.apiKey = document.getElementById('apiKey').value;
-    mapData.mapWidth = document.getElementById('mapWidth').value;
-    mapData.mapHeight = document.getElementById('mapHeight').value;
-    mapData.mapCentre = document.getElementById('mapCentre').value;
-    mapData.mapZoom = document.getElementById('mapZoom').value;
+    sdk.setData(imgData, (data) => {
+        
+		
+		 let content = "<table width='100%' border='0' cellspacing='0' cellpadding='0'> <tbody> <tr> <td style='background-repeat:no-repeat;' background='" + imgData.ImageURL + "' bgcolor='#ffffff' width='600' height='" + imgData.ImgHeight + "' valign='top'> <!--[if gte mso 9]> <v:rect xmlns:v='urn:schemas-microsoft-com:vml' fill='true' stroke='false' style='background-repeat:no-repeat; width:600px;height:" + imgData.ImgHeight + "px;'> <v:fill type='tile' src='" + imgData.ImageURL + "' color='#ffffff' /> <v:textbox inset='0,0,0,0'> <![endif]--> <div> <table width='100%' border='0' cellspacing='0' cellpadding='0'> <tbody> <tr> <td width='30' align='left' valign='top' style='font-size: 0%;' class='mobile-hidden'></td> <td align='left' valign='top'><table width='100%' border='0' cellspacing='0' cellpadding='0'> <tbody> <tr> <td align='left' valign='top' style='padding-top: 95px;color: " + imgData.Textcolor + "; padding-left: 100px; padding-right: 100px; font-size: 48px;'><center>" + imgData.Text + "</center></td> </tr> </tbody> </table></td> <td width='30' align='left' valign='top' style='font-size: 0%;'></td> </tr> </tbody> </table> </div> <!--[if gte mso 9]> </v:textbox> </v:rect> <![endif]--> </td> </tr> </tbody> </table>";
 
-
-    sdk.setData(mapData, (data) => {
-        // mapData = data;
-        let content = '<img width="' + mapData.mapWidth + '" src="https://maps.googleapis.com/maps/api/staticmap?center=' + mapData.mapCentre + '&zoom=' + mapData.mapZoom + '&scale=1&size=' + mapData.mapWidth + 'x' + mapData.mapHeight + '&maptype=roadmap&format=png&visual_refresh=true&&markers=size:mid%7Ccolor:' + mapData.mapMarker.color + '%7Clabel:%7C' + mapData.mapCentre + '" alt="Google Map">';
+        
 
         //check for ampscript
         if (content.search('%%') != -1) {
             sdk.setSuperContent(defaultContent, (newSuperContent) => {});
             // content = defaultContent;
         }
+		
         sdk.setContent(content);
     });
 
-    console.log(JSON.stringify(mapData));
 }
 
-let fetchData = () => {
+llet fetchData = () => {
 
-    // console.log('Loading data...');
+  
 
     sdk.getData((data) => {
         if (Object.keys(data).length > 0) {
-            mapData = data;
-            // document.getElementById('apiKey').value = mapData.apiKey;
-            document.getElementById('mapWidth').value = mapData.mapWidth;
-            document.getElementById('mapHeight').value = mapData.mapHeight;
-            document.getElementById('mapCentre').value = mapData.mapCentre;
-            document.getElementById('mapZoom').value = mapData.mapZoom;
-
-            // console.log('Found data!');
+            imgData = data;
+         
+			
+	document.getElementById('ImgHeight').value = imgData.ImgHeight;
+      document.getElementById('ImageURL').value = imgData.ImageURL;
+    document.getElementById('Text').value = imgData.Text;
+	document.getElementById('Textcolor').value = imgData.Textcolor;
+			
+     
         }
+		
     });
 
-    console.log(JSON.stringify(mapData));
 }
 
-// sdk.setContent(defaultContent);
+
+ sdk.setContent(defaultContent);
 
 // sdk.setSuperContent(defaultContent, (newSuperContent) => {
 //     defaultContent = newSuperContent;
